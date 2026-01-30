@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TaskMaster - Gestão de Tarefas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen p-8">
+
+<div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8">📝 TaskMaster</h1>
+
+    <div class="bg-white p-6 rounded-xl shadow-md mb-8">
+        <form th:action="@{/tarefas}" method="post" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" name="titulo" placeholder="O que precisa ser feito?" required
+                   class="col-span-1 md:col-span-2 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+
+            <textarea name="descricao" placeholder="Descrição (opcional)"
+                      class="col-span-1 md:col-span-2 p-2 border rounded-lg"></textarea>
+
+            <select name="prioridade" class="p-2 border rounded-lg">
+                <option th:each="prio : ${prioridades}" th:value="${prio}" th:text="${prio}"></option>
+            </select>
+
+            <input type="date" name="dataPrazo" class="p-2 border rounded-lg">
+
+            <button type="submit" class="col-span-1 md:col-span-2 bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
+                Adicionar Tarefa
+            </button>
+        </form>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div th:each="t : ${tarefas}"
+             class="bg-white p-5 rounded-xl shadow-sm border-l-8 transition transform hover:scale-105"
+             th:classappend="${t.prioridade.name() == 'ALTA' ? 'border-red-500' : (t.prioridade.name() == 'MEDIA' ? 'border-yellow-500' : 'border-blue-500')}">
+
+            <div class="flex justify-between items-start">
+                <div>
+                    <h3 class="text-lg font-bold" th:text="${t.titulo}" th:classappend="${t.concluida ? 'line-through text-gray-400' : 'text-gray-800'}"></h3>
+                    <p class="text-sm text-gray-600 mb-2" th:text="${t.descricao}"></p>
+                    <span class="text-xs font-semibold px-2 py-1 rounded bg-gray-100 text-gray-500"
+                          th:text="${'Prazo: ' + t.dataPrazo}"></span>
+                </div>
+            </div>
+
+            <div class="mt-4 flex gap-2">
+                <form th:if="${!t.concluida}" th:action="@{/tarefas/{id}/concluir(id=${t.id})}" method="post">
+                    <button class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full hover:bg-green-200">✓ Concluir</button>
+                </form>
+
+                <a th:href="@{/tarefas/{id}/remover(id=${t.id})}"
+                   class="text-xs bg-red-100 text-red-700 px-3 py-1 rounded-full hover:bg-red-200">Excluir</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
