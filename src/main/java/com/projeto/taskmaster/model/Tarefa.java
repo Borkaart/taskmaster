@@ -19,6 +19,11 @@ public class Tarefa {
     @Enumerated(EnumType.STRING) // Salva o nome da prioridade no banco (ex: "ALTA")
     private Prioridade prioridade;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
+
     private boolean concluida = false;
 
     // Getter e Setter para o campo concluida
@@ -28,6 +33,14 @@ public class Tarefa {
 
     public void setConcluida(boolean concluida) {
         this.concluida = concluida;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Long getId() {

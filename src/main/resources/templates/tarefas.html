@@ -8,21 +8,32 @@
 <body class="bg-gray-50 min-h-screen p-8">
 
 <div class="max-w-4xl mx-auto">
-    <h1 class="text-3xl font-bold text-gray-800 mb-8">📝 TaskMaster</h1>
+
+    <div class="flex justify-between items-center mb-8 bg-white p-4 rounded-xl shadow-sm">
+        <div>
+            <h1 class="text-3xl font-bold text-gray-800">📝 TaskMaster</h1>
+            <p class="text-gray-600">Bem-vindo(a), <span class="font-semibold text-blue-600" th:text="${nomeUsuario}">Usuário</span>!</p>
+        </div>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-600 transition shadow-sm">
+                Sair
+            </button>
+        </form>
+    </div>
 
     <div class="bg-white p-6 rounded-xl shadow-md mb-8">
         <form th:action="@{/tarefas}" method="post" class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input type="text" name="titulo" placeholder="O que precisa ser feito?" required
-                   class="col-span-1 md:col-span-2 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                   class="col-span-1 md:col-span-2 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
 
             <textarea name="descricao" placeholder="Descrição (opcional)"
-                      class="col-span-1 md:col-span-2 p-2 border rounded-lg"></textarea>
+                      class="col-span-1 md:col-span-2 p-2 border rounded-lg outline-none"></textarea>
 
-            <select name="prioridade" class="p-2 border rounded-lg">
+            <select name="prioridade" class="p-2 border rounded-lg outline-none">
                 <option th:each="prio : ${prioridades}" th:value="${prio}" th:text="${prio}"></option>
             </select>
 
-            <input type="date" name="dataPrazo" class="p-2 border rounded-lg">
+            <input type="date" name="dataPrazo" class="p-2 border rounded-lg outline-none">
 
             <button type="submit" class="col-span-1 md:col-span-2 bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
                 Adicionar Tarefa
@@ -46,13 +57,17 @@
 
             <div class="mt-4 flex gap-2">
                 <form th:if="${!t.concluida}" th:action="@{/tarefas/{id}/concluir(id=${t.id})}" method="post">
-                    <button class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full hover:bg-green-200">✓ Concluir</button>
+                    <button class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full hover:bg-green-200 transition">✓ Concluir</button>
                 </form>
 
                 <a th:href="@{/tarefas/{id}/remover(id=${t.id})}"
-                   class="text-xs bg-red-100 text-red-700 px-3 py-1 rounded-full hover:bg-red-200">Excluir</a>
+                   class="text-xs bg-red-100 text-red-700 px-3 py-1 rounded-full hover:bg-red-200 transition">Excluir</a>
             </div>
         </div>
+    </div>
+
+    <div th:if="${#lists.isEmpty(tarefas)}" class="text-center p-12 bg-gray-100 rounded-xl border-2 border-dashed">
+        <p class="text-gray-500">Nenhuma tarefa encontrada. Comece adicionando uma acima! ✨</p>
     </div>
 </div>
 

@@ -17,9 +17,6 @@ O **TaskMaster** é uma aplicação Full Stack desenvolvida para organizar o flu
 - **Validação de Datas:** LocalDateFormat para prazos de entrega
 
 ## 📸 Demonstração
-<p align="center">
-  <img width="700" src="<img width="1060" height="918" alt="Image" src="https://github.com/user-attachments/assets/dbf8ddf3-bd62-4119-bbb2-98a66e58ea89" />" alt="Demonstração do TaskMaster">
-</p>
 
 ## ⚙️ Como executar
 1. Clone este repositório.
