@@ -32,15 +32,19 @@ O **TaskMaster** é uma aplicação Full Stack desenvolvida em Java e Spring Boo
 
 ## ⚙️ Como executar o projeto
 
-1. Clone o repositório:
+1. **Clone o repositório:**
    ```bash
    git clone [https://github.com/Borkaart/taskmaster.git](https://github.com/Borkaart/taskmaster.git)
 
-   Importe o projeto na sua IDE (IntelliJ, Eclipse, etc).
+Importe o projeto na sua IDE (IntelliJ, Eclipse, etc).
 
 Execute a classe TaskmasterApplication.
 
 Acesse http://localhost:8080/cadastro para criar seu primeiro usuário.
 
-📬 Contato
-Paulo Henrique - https://www.linkedin.com/in/paulo-henrique-dos-anjos/ - pborkart@outlook.com
+---
+
+## 📬 Contato
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/paulo-henrique-dos-anjos/)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:pborkart@outlook.com)
