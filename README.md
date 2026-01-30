@@ -1,28 +1,37 @@
-# 📝 TaskMaster - Gestão Inteligente de Tarefas
+# 📝 TaskMaster Pro - Gestão de Tarefas Privadas
 
-O **TaskMaster** é uma aplicação Full Stack desenvolvida para organizar o fluxo de trabalho diário. O diferencial deste projeto é a gestão visual de prioridades, permitindo identificar rapidamente o que é urgente através de um sistema de cores dinâmico.
-
-## 🚀 Funcionalidades
-- **CRUD Completo:** Criação, listagem, conclusão e exclusão de tarefas.
-- **Gestão de Prioridades:** Categorização em Baixa, Média e Alta.
-- **Interface Inteligente:** Cards que mudam de cor conforme a urgência (utilizando Tailwind CSS).
-- **Persistência de Dados:** Uso de banco de dados para garantir que suas tarefas não sumam ao fechar o app.
-
-## 🛠️ Tecnologias Utilizadas
-- **Linguagem:** Java 21
-- **Framework:** Spring Boot 3.x
-- **Persistência:** Spring Data JPA + H2 Database
-- **Template Engine:** Thymeleaf
-- **Estilização:** Tailwind CSS (via CDN)
-- **Validação de Datas:** LocalDateFormat para prazos de entrega
-
-## 📸 Demonstração
-
-## ⚙️ Como executar
-1. Clone este repositório.
-2. Certifique-se de ter o JDK 21 instalado.
-3. Execute o comando `./mvnw spring-boot:run`.
-4. Acesse no seu navegador: `http://localhost:8080/tarefas`.
+O **TaskMaster** é uma aplicação Full Stack desenvolvida em Java e Spring Boot para organização de tarefas. Diferente de listas comuns, este sistema oferece um ambiente multiusuário onde cada conta possui seu próprio banco de dados de tarefas privado e seguro.
 
 ---
-Desenvolvido por Paulo Henrique dos Anjos como parte dos meus estudos em Spring Boot.
+
+## 🚀 Novas Funcionalidades (V2.0)
+
+- **Sistema de Autenticação:** Login e cadastro de usuários com Spring Security.
+- **Privacidade de Dados:** Cada usuário visualiza e gerencia apenas as suas próprias tarefas.
+- **Segurança de Dados:** Criptografia de senhas utilizando o algoritmo **BCrypt**.
+- **Interface Dinâmica:** UI moderna com Tailwind CSS e indicadores de prioridade baseados em Enums.
+- **Persistência Relacional:** Relacionamento `@ManyToOne` entre Tarefas e Usuários no banco de dados.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Backend:** Java 17, Spring Boot 3, Spring Data JPA, Spring Security.
+- **Frontend:** Thymeleaf, Tailwind CSS.
+- **Banco de Dados:** H2 Database (In-memory para desenvolvimento).
+- **Segurança:** BCrypt Password Encoder.
+
+---
+
+## 📸 Como ficou o projeto?
+
+<img width="1069" height="834" alt="image" src="https://github.com/user-attachments/assets/bd51dd36-98a4-4109-af42-eec2b08e1620" />
+
+
+---
+
+## ⚙️ Como executar o projeto
+
+1. Clone o repositório:
+   ```bash
+   git clone [https://github.com/Borkaart/taskmaster.git](https://github.com/Borkaart/taskmaster.git)
